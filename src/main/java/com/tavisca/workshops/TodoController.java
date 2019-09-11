@@ -3,6 +3,7 @@ package com.tavisca.workshops;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@CrossOrigin(origins = "*", allowedHeaders="*")	
 @RequestMapping("/api/v1")
 
 public class TodoController {
@@ -42,7 +44,6 @@ public class TodoController {
 	public String addNewTask(@RequestBody String todo) {
 		int length = this.tasks.length();
 		boolean exists = false;
-
 		try {
 			JSONObject abc = new JSONObject(todo);
 			for (int i = 0; i < length; i++) {
